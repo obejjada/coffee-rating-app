@@ -46,6 +46,6 @@ class TestDatabaseCreation():
         assert column_data[2][1] == "Coffee Beverage"
         assert column_data[2][2] == "Text"
         assert column_data[3][1] == "Rating"
-        assert column_data[3][2] == "Text"
+        assert column_data[3][2] == "Real"
 
         connection.close()
