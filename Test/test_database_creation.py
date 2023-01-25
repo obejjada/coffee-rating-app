@@ -21,3 +21,6 @@ class TestDatabaseCreation():
         databasecreation = DatabaseCreation()
         databasecreation.create_database(CURRENT_PATH)
         assert os.path.exists(TEST_DATABASE_PATH)
+    def test_create_sql_table(self):
+        """ Method to verify a table is created in the database with the correct title and column headings"""
+        pass
