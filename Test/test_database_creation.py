@@ -6,6 +6,14 @@ TEST_DATABASE_PATH = CURRENT_PATH + r'\Database\coffee-rating-app-database.db'
 
 class TestDatabaseCreation():
     """Test class to veirfy the application database is created correctly"""
+    def setup_method(self):
+        """ Setup Method to be run at the start of each test"""
+        pass
+
+    def teardown_method(self):
+        """ Teaardown Method to be run at the end of each test"""
+        pass
+    
     def test_create_database_file(self):
         """ Method to verify if the application database has been created"""
         databasecreation = DatabaseCreation()
