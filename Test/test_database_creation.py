@@ -16,8 +16,8 @@ class TestDatabaseCreation():
 
     def test_create_database_file(self):
         """ Method to verify if the application database has been created"""
-        if os.path.exists(TEST_DATABASE_PATH):
-            os.remove(TEST_DATABASE_PATH)
+        if os.path.exists(CURRENT_PATH + r'\Database'):
+            os.rmdir(CURRENT_PATH + r'\Database')
         databasecreation = DatabaseCreation()
         databasecreation.create_database(CURRENT_PATH)
         assert os.path.exists(TEST_DATABASE_PATH)
