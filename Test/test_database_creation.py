@@ -38,7 +38,7 @@ class TestDatabaseCreation():
         assert len(cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Rating Table'").fetchall()) == 1
 
         column_data = cursor.execute("PRAGMA table_info(Rating Table)").fetchall()
-        
+
         assert column_data[0][1] == "Date"
         assert column_data[0][2] == "Text"
         assert column_data[1][1] == "Coffee Shop Name"
@@ -47,3 +47,5 @@ class TestDatabaseCreation():
         assert column_data[2][2] == "Text"
         assert column_data[3][1] == "Rating"
         assert column_data[3][2] == "Text"
+
+        connection.close()
