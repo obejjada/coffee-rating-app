@@ -35,17 +35,17 @@ class TestDatabaseCreation():
         connection = sqlite3.connect(TEST_DATABASE_PATH)
         cursor = connection.cursor()
 
-        assert len(cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Rating Table'").fetchall()) == 1
+        assert len(cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Rating_Table'").fetchall()) == 1
 
-        column_data = cursor.execute("PRAGMA table_info(Rating Table)").fetchall()
+        column_data = cursor.execute("PRAGMA table_info(Rating_Table)").fetchall()
 
         assert column_data[0][1] == "Date"
-        assert column_data[0][2] == "Text"
-        assert column_data[1][1] == "Coffee Shop Name"
-        assert column_data[1][2] == "Text"
-        assert column_data[2][1] == "Coffee Beverage"
-        assert column_data[2][2] == "Text"
+        assert column_data[0][2] == "TEXT"
+        assert column_data[1][1] == "Coffee_Shop_Name"
+        assert column_data[1][2] == "TEXT"
+        assert column_data[2][1] == "Coffee_Beverage"
+        assert column_data[2][2] == "TEXT"
         assert column_data[3][1] == "Rating"
-        assert column_data[3][2] == "Real"
+        assert column_data[3][2] == "REAL"
 
         connection.close()
