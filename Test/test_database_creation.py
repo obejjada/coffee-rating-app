@@ -1,7 +1,7 @@
 """ Test Module used to hold the unit tests that will verify the methods related to the database"""
 import os
 from Code.databse_actions import DatabaseCreation
-CURRENT_PATH = os.path.dirname(os.path.abspath(__file__)) 
+CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 TEST_DATABASE_PATH = CURRENT_PATH + r'\Database\coffee-rating-app-database.db'
 
 class TestDatabaseCreation():
