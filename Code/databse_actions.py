@@ -23,6 +23,6 @@ class DatabaseCreation():
         connection.close()
 class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
-    def delete_database(self):
+    def delete_database(self,database_path):
         """Method to delete the application database"""
         pass
