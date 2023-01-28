@@ -21,3 +21,8 @@ class DatabaseCreation():
         Rating real)""")
         connection.commit()
         connection.close()
+class DatabaseDeletion():
+    """DatabaseDeletion class contains methods to delete the application database"""
+    def delete_database(self):
+        """Method to delete the application database"""
+        pass
