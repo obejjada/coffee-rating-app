@@ -36,3 +36,6 @@ class TestDatabaseDeletion():
         """ Method to verify if the application database has been deleted"""
         self.databasedeletion.delete_database(CURRENT_PATH)
         assert not os.path.exists(CURRENT_PATH + r'\Database')
+    def test_delete_entry(self):
+        """ Method to verify if a specified record in the application database has been deleted"""
+        pass

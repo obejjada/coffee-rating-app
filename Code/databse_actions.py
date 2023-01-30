@@ -28,3 +28,6 @@ class DatabaseDeletion():
         """Method to delete the application database"""
         if os.path.exists(database_path + r'\Database'):
             shutil.rmtree(database_path + r'\Database')
+    def delete_record(self, database_path, database_record):
+        """Method to delete a specified entry within the application"""
+        pass
