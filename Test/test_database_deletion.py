@@ -34,6 +34,5 @@ class TestDatabaseDeletion():
             shutil.rmtree(CURRENT_PATH + r'\Database')
     def test_create_database_file(self):
         """ Method to verify if the application database has been deleted"""
-        pass
-        
-
+        self.databasedeletion.delete_database(CURRENT_PATH)
+        assert not os.path.exists(CURRENT_PATH + r'\Database')
