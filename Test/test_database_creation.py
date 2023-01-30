@@ -11,16 +11,16 @@ class TestDatabaseCreation():
     databasecreation = DatabaseCreation()
     def setup_method(self):
         """ Setup Method to be run at the start of each test"""
-        pass
+        if os.path.exists(CURRENT_PATH + r'\Database'):
+            shutil.rmtree(CURRENT_PATH + r'\Database')
 
     def teardown_method(self):
         """ Teaardown Method to be run at the end of each test"""
-        pass
+        if os.path.exists(CURRENT_PATH + r'\Database'):
+            shutil.rmtree(CURRENT_PATH + r'\Database')
 
     def test_create_database_file(self):
         """ Method to verify if the application database has been created"""
-        if os.path.exists(CURRENT_PATH + r'\Database'):
-            shutil.rmtree(CURRENT_PATH + r'\Database')
         self.databasecreation.create_database(CURRENT_PATH)
         assert os.path.exists(TEST_DATABASE_PATH)
     def test_create_table(self):
@@ -31,9 +31,10 @@ class TestDatabaseCreation():
         Column 3: Coffee Beverage (Text)
         Column 4: Rating (Real)
         """
-        self.databasecreation.create_table(TEST_DATABASE_PATH)
-        connection = sqlite3.connect(TEST_DATABASE_PATH)
+        os.makedirs(CURRENT_PATH + r'\Database')
+        connection = sqlite3.connect(CURRENT_PATH + r'\Database\coffee-rating-app-database.db')
         cursor = connection.cursor()
+        self.databasecreation.create_table(TEST_DATABASE_PATH)
 
         assert len(cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='Rating_Table'").fetchall()) == 1
 
