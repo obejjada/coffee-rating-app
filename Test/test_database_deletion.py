@@ -38,4 +38,9 @@ class TestDatabaseDeletion():
         assert not os.path.exists(CURRENT_PATH + r'\Database')
     def test_delete_entry(self):
         """ Method to verify if a specified record in the application database has been deleted"""
-        pass
+        self.databasedeletion.delete_record(CURRENT_PATH + r'\Database', 1)
+        connection = sqlite3.connect(CURRENT_PATH + r'\Database\coffee-rating-app-database.db')
+        cursor = connection.cursor()
+        database_contents = cursor.execute("SELECT * FROM Rating_Table").fetchall()
+        connection.close()
+        assert len(database_contents) == 2#
