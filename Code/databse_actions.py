@@ -30,4 +30,8 @@ class DatabaseDeletion():
             shutil.rmtree(database_path + r'\Database')
     def delete_record(self, database_path, database_record):
         """Method to delete a specified entry within the application"""
-        pass
+        connection = sqlite3.connect(database_path + r'\coffee-rating-app-database.db')
+        cursor = connection.cursor()
+        cursor.execute("DELETE from Rating_Table WHERE rowid = (?)", str(database_record))
+        connection.commit()
+        connection.close()
