@@ -1,6 +1,7 @@
 """Module contains classes and methods to manipulate the application database"""
 import sqlite3
 import os
+import shutil
 class DatabaseCreation():
     """DatabaseCreation class contains methods to create the database for the application"""
     def create_database(self, database_path):
@@ -12,7 +13,7 @@ class DatabaseCreation():
     def create_table(self, database_path):
         """Mthod to create a table within the database with the following attributes"""
         connection = sqlite3.connect(database_path)
-        cursor = connection.cursor()#
+        cursor = connection.cursor()
 
         cursor.execute("""CREATE TABLE IF NOT EXISTS Rating_Table(
         Date text,
@@ -25,4 +26,5 @@ class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
     def delete_database(self,database_path):
         """Method to delete the application database"""
-        pass
+        if os.path.exists(database_path + r'\Database'):
+            shutil.rmtree(database_path + r'\Database')
