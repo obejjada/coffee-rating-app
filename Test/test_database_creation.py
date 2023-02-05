@@ -52,4 +52,21 @@ class TestDatabaseCreation():
         connection.close()
     def test_add_record(self):
         """Method to verify that a record has been correctly added to the database"""
-        pass
+
+        os.makedirs(CURRENT_PATH + r'\Database')
+        connection = sqlite3.connect(CURRENT_PATH + r'\Database\coffee-rating-app-database.db')
+        cursor = connection.cursor()
+        cursor.execute("""CREATE TABLE IF NOT EXISTS Rating_Table(
+        Date text,
+        Coffee_Shop_Name text,
+        Coffee_Beverage text,
+        Rating real)""")
+        connection.commit()
+        connection.close()
+        self.databasecreation.add_record(TEST_DATABASE_PATH, "05/09/2022", "Bristol Coffee Shop", "Americano Black", 4.5)
+        connection = sqlite3.connect(CURRENT_PATH + r'\Database\coffee-rating-app-database.db')
+        cursor = connection.cursor()
+        test_record = cursor.execute('''SELECT * FROM Rating_Table WHERE Date = '05/09/2022' AND Coffee_Shop_Name = 'Bristol Coffee Shop'
+                                     AND Coffee_Beverage = 'Americano Black' AND Rating = 4.5''').fetchall()
+        connection.close()
+        assert len(test_record) == 1
