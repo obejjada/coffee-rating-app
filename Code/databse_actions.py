@@ -24,7 +24,11 @@ class DatabaseCreation():
         connection.close()
     def add_record(self, database_path, date, coffee_shop_name, coffee_beverage, rating):
         """Method to input a record into the database"""
-        pass
+        connection = sqlite3.connect(database_path)
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO Rating_Table VALUES (?,?,?,?)",(date,coffee_shop_name,coffee_beverage,rating))
+        connection.commit()
+        connection.close()
 class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
     def delete_database(self,database_path):
