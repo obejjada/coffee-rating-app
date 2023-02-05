@@ -50,3 +50,6 @@ class TestDatabaseCreation():
         assert column_data[3][2] == "REAL"
 
         connection.close()
+    def test_add_record(self):
+        """Method to verify that a record has been correctly added to the database"""
+        pass

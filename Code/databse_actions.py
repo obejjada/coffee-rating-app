@@ -22,6 +22,9 @@ class DatabaseCreation():
         Rating real)""")
         connection.commit()
         connection.close()
+    def add_record(self,database_path):
+        """Method to input a record into the database"""
+        pass
 class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
     def delete_database(self,database_path):
