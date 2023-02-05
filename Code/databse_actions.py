@@ -22,7 +22,7 @@ class DatabaseCreation():
         Rating real)""")
         connection.commit()
         connection.close()
-    def add_record(self,database_path):
+    def add_record(self, database_path, date, coffee_shop_name, coffee_beverage, rating):
         """Method to input a record into the database"""
         pass
 class DatabaseDeletion():
