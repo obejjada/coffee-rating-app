@@ -2,13 +2,10 @@
 import os
 import shutil
 import sqlite3
-import logging
 from Code.databse_actions import DatabaseCreation
 
 CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 TEST_DATABASE_PATH = CURRENT_PATH + r'\Database\coffee-rating-app-database.db'
-
-logging.basicConfig(filename = 'coffee-rating-app.log', format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 class TestDatabaseCreation():
     """Test class to veirfy the application database is created correctly"""
