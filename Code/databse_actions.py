@@ -13,7 +13,6 @@ class DatabaseCreation():
         if not os.path.exists(database_path + r'\Database'):
             os.makedirs(database_path + r'\Database')
             connection = sqlite3.connect(database_path + r'\Database\coffee-rating-app-database.db')
-            logging.info('test')
             connection.close()
     def create_table(self, database_path):
         """Mthod to create a table within the database with the following attributes"""
