@@ -3,7 +3,8 @@ import sqlite3
 import os
 import shutil
 import logging
-logging.basicConfig(filename = 'coffee-rating-app.log', format='%(levelname)s:%(message)s', level=logging.INFO, force=True)
+logging.basicConfig(filename = 'coffee-rating-app.log', format='%(levelname)s:%(asctime)s:%(message)s',
+                    level=logging.INFO, force=True, datefmt='%m/%d/%Y %I:%M:%S %p')
 
 class DatabaseCreation():
     """DatabaseCreation class contains methods to create the database for the application"""
