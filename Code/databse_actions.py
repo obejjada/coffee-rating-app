@@ -3,7 +3,10 @@ import sqlite3
 import os
 import shutil
 import logging
-logging.basicConfig(filename = 'coffee-rating-app.log', format='%(levelname)s:%(asctime)s:%(message)s',
+CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
+
+logging.basicConfig(filename = CURRENT_PATH + r'\coffee-rating-app.log',
+                    format='%(levelname)s:%(asctime)s:%(message)s',
                     level=logging.INFO, force=True, datefmt='%m/%d/%Y %I:%M:%S %p')
 
 class DatabaseCreation():
