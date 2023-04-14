@@ -57,12 +57,22 @@ class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
     def delete_database(self,database_path):
         """Method to delete the application database"""
-        if os.path.exists(database_path + r'\Database'):
-            shutil.rmtree(database_path + r'\Database')
+        try:
+            if os.path.exists(database_path + r'\Database'):
+                shutil.rmtree(database_path + r'\Database')
+                logging.info('Deletedd %s', database_path + r'\Database')
+        except Exception as exception:
+            logging.exception('%s', exception)
+
     def delete_record(self, database_path, database_record):
         """Method to delete a specified entry within the application"""
-        connection = sqlite3.connect(database_path + r'\coffee-rating-app-database.db')
-        cursor = connection.cursor()
-        cursor.execute("DELETE from Rating_Table WHERE rowid = (?)", str(database_record))
-        connection.commit()
-        connection.close()
+        try:
+            connection = sqlite3.connect(database_path + r'\coffee-rating-app-database.db')
+            cursor = connection.cursor()
+            cursor.execute("DELETE from Rating_Table WHERE rowid = (?)", str(database_record))
+            connection.commit()
+            connection.close()
+            logging.info('Deleted record %s from Rating_Table', database_record)
+        except Exception as exception:
+            logging.exception('%s', exception)
+
