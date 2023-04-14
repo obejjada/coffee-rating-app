@@ -7,16 +7,23 @@ CURRENT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 logging.basicConfig(filename = CURRENT_PATH + r'\coffee-rating-app.log',
                     format='%(levelname)s:%(asctime)s:%(message)s',
-                    level=logging.INFO, force=True, datefmt='%m/%d/%Y %I:%M:%S %p')
+                    level=logging.INFO, force=True, datefmt='%m/%d/%Y %H:%M:%S')
 
 class DatabaseCreation():
     """DatabaseCreation class contains methods to create the database for the application"""
     def create_database(self, database_path):
         """Method to create the database if one does not exist"""
-        if not os.path.exists(database_path + r'\Database'):
-            os.makedirs(database_path + r'\Database')
-            connection = sqlite3.connect(database_path + r'\Database\coffee-rating-app-database.db')
-            connection.close()
+        try:
+            if not os.path.exists(database_path + r'\Database'):
+                os.makedirs(database_path + r'\Database')
+                connection = sqlite3.connect(database_path + r'\Database\coffee-rating-app-database.db')
+                connection.close()
+                logging.info('Database created successfully at %s', database_path + r'\Database\coffee-rating-app-database.db')
+        except Exception as exception:
+            logging.exception('%s', exception)
+        else:
+            logging.info('Database already exists at %s', database_path + r'\Database\coffee-rating-app-database.db')
+
     def create_table(self, database_path):
         """Mthod to create a table within the database with the following attributes"""
         connection = sqlite3.connect(database_path)
