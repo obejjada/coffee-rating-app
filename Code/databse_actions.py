@@ -43,11 +43,16 @@ class DatabaseCreation():
 
     def add_record(self, database_path, date, coffee_shop_name, coffee_beverage, rating):
         """Method to input a record into the database"""
-        connection = sqlite3.connect(database_path)
-        cursor = connection.cursor()
-        cursor.execute("INSERT INTO Rating_Table VALUES (?,?,?,?)",(date,coffee_shop_name,coffee_beverage,rating))
-        connection.commit()
-        connection.close()
+        try:
+            connection = sqlite3.connect(database_path)
+            cursor = connection.cursor()
+            cursor.execute("INSERT INTO Rating_Table VALUES (?,?,?,?)",(date,coffee_shop_name,coffee_beverage,rating))
+            connection.commit()
+            connection.close()
+            logging.info('Entry %s, %s, %s, %s added to Rating_Table',date, coffee_shop_name,coffee_beverage, rating )
+        except Exception as exception:
+            logging.exception('%s', exception)
+
 class DatabaseDeletion():
     """DatabaseDeletion class contains methods to delete the application database"""
     def delete_database(self,database_path):
