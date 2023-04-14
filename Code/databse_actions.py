@@ -19,10 +19,10 @@ class DatabaseCreation():
                 connection = sqlite3.connect(database_path + r'\Database\coffee-rating-app-database.db')
                 connection.close()
                 logging.info('Database created successfully at %s', database_path + r'\Database\coffee-rating-app-database.db')
+            else:
+                logging.info('Database already exists at %s', database_path + r'\Database\coffee-rating-app-database.db')
         except Exception as exception:
             logging.exception('%s', exception)
-        else:
-            logging.info('Database already exists at %s', database_path + r'\Database\coffee-rating-app-database.db')
 
     def create_table(self, database_path):
         """Mthod to create a table within the database with the following attributes"""
