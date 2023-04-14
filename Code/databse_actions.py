@@ -26,16 +26,21 @@ class DatabaseCreation():
 
     def create_table(self, database_path):
         """Mthod to create a table within the database with the following attributes"""
-        connection = sqlite3.connect(database_path)
-        cursor = connection.cursor()
+        try:
+            connection = sqlite3.connect(database_path)
+            cursor = connection.cursor()
 
-        cursor.execute("""CREATE TABLE IF NOT EXISTS Rating_Table(
-        Date text,
-        Coffee_Shop_Name text,
-        Coffee_Beverage text,
-        Rating real)""")
-        connection.commit()
-        connection.close()
+            cursor.execute("""CREATE TABLE IF NOT EXISTS Rating_Table(
+            Date text,
+            Coffee_Shop_Name text,
+            Coffee_Beverage text,
+            Rating real)""")
+            connection.commit()
+            connection.close()
+            logging.info('Rating_Table table created successfully')
+        except Exception as exception:
+            logging.exception('%s', exception)
+
     def add_record(self, database_path, date, coffee_shop_name, coffee_beverage, rating):
         """Method to input a record into the database"""
         connection = sqlite3.connect(database_path)
