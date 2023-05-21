@@ -43,12 +43,12 @@ class TestDatabaseCreation():
         cursor = connection.cursor()
         self.databasecreation.create_table(TEST_DATABASE_PATH)
 
-        assert len(cursor.execute("SELECT name FROM sqlite_master WHERE'\
-                                  'type='table' AND name='Rating_Table'\
-                                  '").fetchall()) == 1
+        assert len(cursor.execute("SELECT name FROM sqlite_master WHERE type= \
+                                  'table' AND name='Rating_Table'"
+                                  ).fetchall()) == 1
 
-        column_data = cursor.execute("PRAGMA table_info(Rating_Table'\
-                                     )").fetchall()
+        column_data = cursor.execute("PRAGMA table_info(Rating_Table)"
+                                     ).fetchall()
 
         assert column_data[0][1] == "Date"
         assert column_data[0][2] == "TEXT"
@@ -82,11 +82,11 @@ class TestDatabaseCreation():
         connection = sqlite3.connect(CURRENT_PATH + r'\Database\coffee-rating'
                                      r'-app-database.db')
         cursor = connection.cursor()
-        test_record = cursor.execute('''SELECT * FROM Rating_Table WHERE Date
-                                     = '05/09/2022' AND Coffee_Shop_Name =
-                                     'Bristol Coffee Shop'
-                                     AND Coffee_Beverage =
-                                     'Americano Black' AND Rating = 4.5
+        test_record = cursor.execute('''SELECT * FROM Rating_Table WHERE Date \
+                                     = '05/09/2022' AND Coffee_Shop_Name = \
+                                     'Bristol Coffee Shop' \
+                                     AND Coffee_Beverage = \
+                                     'Americano Black' AND Rating = 4.5 \
                                      ''').fetchall()
         connection.close()
         assert len(test_record) == 1
