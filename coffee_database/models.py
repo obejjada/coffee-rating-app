@@ -8,7 +8,3 @@ class CoffeeDatabase(models.Model):
     coffee_shop = models.TextField()
     coffee_beverage = models.CharField(max_length=300)
     rating = models.FloatField()
-
-    def __str__(self):
-        return f"{self.date_time}, {self.coffee_shop}, {self.coffee_beverage},\
-                 {self.rating}"
