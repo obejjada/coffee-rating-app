@@ -1,17 +1,27 @@
 <h1> Coffee Rating Application</h1>
+<style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+  padding: 5px;
+    }
+</style>
+</head>
 <table>
     <tbody>
-        <th>Date</th>
-        <th>Coffee Shop</th>
-        <th>Coffee Beverage</th>
-        <th>Rating</th>
+        <th style="text-align: center">Date</th>
+        <th style="text-align: center">Coffee Shop</th>
+        <th style="text-align: center">Coffee Beverage</th>
+        <th style="text-align: center">Rating</th>
     </tbody>
     {% for record in all_records %}
     <tr>
-        <td>{{record.Date}}</td>
-        <td>{{record.coffee_shop}}</td>
-        <td>{{record.coffee_beverage}}</td>
-        <td>{{record.rating}}</td>
+        <td style="text-align: center">{{record.Date}}</td>
+        <td style="text-align: center">{{record.coffee_shop}}</td>
+        <td style="text-align: center">{{record.coffee_beverage}}</td>
+        <td style="text-align: center">{{record.rating}}</td>
     </tr>
     {% endfor %}
 </table>
