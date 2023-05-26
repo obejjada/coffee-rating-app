@@ -6,8 +6,12 @@
         <th>Coffee Beverage</th>
         <th>Rating</th>
     </tbody>
-    <td>{{Date}}</td>
-    <td>{{coffee_shop}}</td>
-    <td>{{coffee_beverage}}</td>
-    <td>{{rating}}</td>
+    {% for record in all_records %}
+    <tr>
+        <td>{{record.Date}}</td>
+        <td>{{record.coffee_shop}}</td>
+        <td>{{record.coffee_beverage}}</td>
+        <td>{{record.rating}}</td>
+    </tr>
+    {% endfor %}
 </table>
