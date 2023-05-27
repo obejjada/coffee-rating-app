@@ -18,3 +18,9 @@ def database_return(request):
         complete_entries.append(context)
     coffee_dict = {"all_records": complete_entries}
     return HttpResponse(template.render(coffee_dict, request))
+
+
+def submit_form(request):
+    '''Method that displays the entry form to the database'''
+    template = "coffee_database/coffee-entry.html"
+    return render(request, template)
