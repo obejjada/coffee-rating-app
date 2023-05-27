@@ -6,7 +6,8 @@
     }
 </style>
 <h> Please enter you coffee entry below</h>
-<form>
+<form action = "coffee-entered" method="post">
+    {% csrf_token %}
     <table>
         <tbody>
             <th>Coffee Shop</th>
@@ -15,13 +16,13 @@
         </tbody>
         <tr>
             <td>
-                <input type="text">
+                <input id="coffee_shop" name="coffee_shop" type="text" value="{{coffee_shop}}">
             </td>
             <td>
-                <input type="text">
+                <input id="coffee_bevarge" name = "coffee_beverage" type="text" value="{{coffee_bevarge}}">
             </td>
             <td>
-                <input type="text">
+                <input id="rating" name = "rating" type="text" value="{{rating}}">
             </td>
         </tr>
     </table>

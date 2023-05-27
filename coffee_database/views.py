@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse
+from django.utils import timezone
+from django.shortcuts import redirect
 from .models import CoffeeDatabase
 
 
@@ -24,3 +26,13 @@ def submit_form(request):
     '''Method that displays the entry form to the database'''
     template = "coffee_database/coffee-entry.html"
     return render(request, template)
+
+
+def submit_record(request):
+    '''Method to add record to the database'''
+    entry = CoffeeDatabase(date_time=timezone.now(), coffee_shop=request.POST['coffee_shop']
+                           .title(), coffee_beverage=request.POST['coffee_beverage'].title(),
+                           rating=request.POST['rating'])
+    entry.save()
+    response = redirect('/coffee_database/all-records')
+    return response
