@@ -16,13 +16,13 @@
         </tbody>
         <tr>
             <td>
-                <input id="coffee_shop" name="coffee_shop" type="text" value="{{coffee_shop}}">
+                <input id="coffee_shop" name="coffee_shop" required = "true" type="text" value="{{coffee_shop}}">
             </td>
             <td>
-                <input id="coffee_bevarge" name = "coffee_beverage" type="text" value="{{coffee_bevarge}}">
+                <input id="coffee_bevarge" name = "coffee_beverage" required = "true" type="text" value="{{coffee_bevarge}}">
             </td>
             <td>
-                <input id="rating" name = "rating" type="text" value="{{rating}}">
+                <input id="rating" name = "rating" type="number" min ="0" max="5" required = "true" step="0.05" value="{{rating}}">
             </td>
         </tr>
     </table>
