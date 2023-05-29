@@ -16,7 +16,8 @@ def database_return(request):
                    "coffee_shop": database_entries[index].get("coffee_shop"),
                    "coffee_beverage": database_entries[index].get(
                    "coffee_beverage"),
-                   "rating": database_entries[index].get("rating")}
+                   "rating": database_entries[index].get("rating"),
+                   "id": database_entries[index].get("id")}
         complete_entries.append(context)
     coffee_dict = {"all_records": complete_entries}
     return HttpResponse(template.render(coffee_dict, request))
@@ -34,5 +35,14 @@ def submit_record(request):
                            .title(), coffee_beverage=request.POST['coffee_beverage'].title(),
                            rating=request.POST['rating'])
     entry.save()
+    response = redirect('/coffee_database/all-records')
+    return response
+
+
+def delete_entry(request):
+    '''Method to delete selected records from the database'''
+    for checked in request.POST.getlist('checkbox'):
+        entry = CoffeeDatabase.objects.get(id=checked)
+        entry.delete()
     response = redirect('/coffee_database/all-records')
     return response

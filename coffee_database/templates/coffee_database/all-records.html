@@ -10,10 +10,14 @@
 </style>
 </head>
 <form action = "coffee-entry">
-  <input value = "Enter new record" type="submit" >
+  <input value = "Enter new record" type="submit">
 </form>
+<form action = "delete-entry" method = 'post'>
+  {% csrf_token %}
+  <input value = "Delete Record(s)" type="submit">
 <table>
     <tbody>
+        <th></th>
         <th style="text-align: center">Date</th>
         <th style="text-align: center">Coffee Shop</th>
         <th style="text-align: center">Coffee Beverage</th>
@@ -21,6 +25,9 @@
     </tbody>
     {% for record in all_records %}
     <tr>
+        <td>
+          <input type = "checkbox" name = "checkbox" value="{{record.id}}">
+        </td>
         <td style="text-align: center">{{record.Date}}</td>
         <td style="text-align: center">{{record.coffee_shop}}</td>
         <td style="text-align: center">{{record.coffee_beverage}}</td>
@@ -28,3 +35,4 @@
     </tr>
     {% endfor %}
 </table>
+</form>
