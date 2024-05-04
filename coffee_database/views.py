@@ -6,6 +6,12 @@ from django.shortcuts import redirect
 from .models import CoffeeDatabase
 
 
+def home(request):
+    '''Method to return the use to the home page'''
+    template = "coffee_database/home.html"
+    return render(request, template)
+
+
 def database_return(request):
     '''Method to return the entire entries in the database'''
     database_entries = CoffeeDatabase.objects.values()
