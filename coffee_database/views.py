@@ -3,7 +3,19 @@ from django.template import loader
 from django.http import HttpResponse
 from django.utils import timezone
 from django.shortcuts import redirect
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from .models import CoffeeDatabase
+from .searializer import CoffeeSerializer
+
+
+@api_view(['GET'])
+def get_all_coffee_drinks(request):
+    ''' api endpoint for returning a JSON object with all the entries in the
+    database'''
+    items = CoffeeDatabase.objects.all()
+    serializer = CoffeeSerializer(items, many=True)
+    return Response(serializer.data)
 
 
 def home(request):
