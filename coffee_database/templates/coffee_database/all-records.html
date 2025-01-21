@@ -32,12 +32,12 @@
         <th style="text-align: center">Coffee Beverage</th>
         <th style="text-align: center">Rating</th>
     </tbody>
-    {% for record in all_records %}
+    {% for record in api_return %}
     <tr>
         <td>
           <input type = "checkbox" name = "checkbox" value="{{record.id}}">
         </td>
-        <td style="text-align: center">{{record.Date}}</td>
+        <td style="text-align: center">{{record.date_time}}</td>
         <td style="text-align: center">{{record.coffee_shop}}</td>
         <td style="text-align: center">{{record.coffee_beverage}}</td>
         <td style="text-align: center">{{record.rating}}</td>
