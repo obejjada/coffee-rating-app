@@ -30,7 +30,7 @@ def database_return(request):
     response = requests.get(url)
     api_return = response.json()
     template = "coffee_database/all-records.html"
-    return render(request, template, {"api_returns": api_return})
+    return render(request, template, {"api_return": api_return})
 
 
 def submit_form(request):
@@ -43,7 +43,7 @@ def submit_record(request):
     '''Method to add record to the database'''
     entry = CoffeeDatabase(date_time=timezone.now(),
                            coffee_shop=request.POST['coffee_shop'].title(),
-                           coffee_beverage=request.POST['coffe_beverage'].title(),
+                           coffee_beverage=request.POST['coffee_beverage'].title(),
                            rating=request.POST['rating'])
     entry.save()
     response = redirect('/coffee_database/all-records')
