@@ -28,7 +28,10 @@ def database_return(request):
        get_all_coffee_drinks API endpoint'''
     url = "http://127.0.0.1:8000/coffee_database/api/all"
     response = requests.get(url)
-    api_return = response.json()
+    if response.status_code == 200:
+        api_return = response.json()
+    else:
+        api_return = []
     template = "coffee_database/all-records.html"
     return render(request, template, {"api_return": api_return})
 
