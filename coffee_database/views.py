@@ -49,8 +49,9 @@ def submit_form(request):
 
 def submit_record(request):
     '''Method to add record to the database'''
-    entry = CoffeeDatabase(date_time=timezone.now(), coffee_shop=request.POST['coffee_shop']
-                           .title(), coffee_beverage=request.POST['coffee_beverage'].title(),
+    entry = CoffeeDatabase(date_time=timezone.now(),
+                           coffee_shop=request.POST['coffee_shop'].title(),
+                           coffee_beverage=request.POST['coffe_beverage'].title(),
                            rating=request.POST['rating'])
     entry.save()
     response = redirect('/coffee_database/all-records')
