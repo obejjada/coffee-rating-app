@@ -26,7 +26,7 @@ def home(request):
 def database_return(request):
     '''Method to return the entire entries in the database using
        get_all_coffee_drinks API endpoint'''
-    url = "http://127.0.0.1:8000/coffee_database/api/all"
+    url = "http://127.0.0.1:8000/coffee_database/api/coffee_drinks/all/"
     response = requests.get(url)
     if response.status_code == 200:
         api_return = response.json()
