@@ -32,13 +32,13 @@ def database_return(request):
         api_return = response.json()
     else:
         api_return = []
-    template = "coffee_database/all-records.html"
+    template = "coffee_database/All-Coffee-Drinks.html"
     return render(request, template, {"api_return": api_return})
 
 
 def submit_form(request):
     '''Method that displays the entry form to the database'''
-    template = "coffee_database/coffee-entry.html"
+    template = "coffee_database/Coffee-Drink-Entry-Form.html"
     return render(request, template)
 
 
@@ -49,7 +49,7 @@ def submit_record(request):
                            coffee_beverage=request.POST['coffee_beverage'].title(),
                            rating=request.POST['rating'])
     entry.save()
-    response = redirect('/coffee_database/all-records')
+    response = redirect('/coffee_database/All-Coffee-Drinks')
     return response
 
 
@@ -58,5 +58,5 @@ def delete_entry(request):
     for checked in request.POST.getlist('checkbox'):
         entry = CoffeeDatabase.objects.get(id=checked)
         entry.delete()
-    response = redirect('/coffee_database/all-records')
+    response = redirect('/coffee_database/All-Coffee-Drinks')
     return response
