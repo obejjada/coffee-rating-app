@@ -1,4 +1,5 @@
 from django.db import models
+from django_countries.fields import CountryField
 
 
 class CoffeeDatabase(models.Model):
@@ -8,3 +9,11 @@ class CoffeeDatabase(models.Model):
     coffee_shop = models.TextField()
     coffee_beverage = models.CharField(max_length=300)
     rating = models.FloatField()
+
+
+class CoffeeOrigin(models.Model):
+    """Stores countries where coffee beans are grown."""
+    country = CountryField(unique=True)
+
+    def __str__(self):
+        return self.country
