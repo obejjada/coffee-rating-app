@@ -17,3 +17,11 @@ class CoffeeOrigin(models.Model):
 
     def __str__(self):
         return self.country
+
+
+class FlavourNote(models.Model):
+    """Stores possible flavor notes of coffee."""
+    flavour_notes = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.flavour_notes
