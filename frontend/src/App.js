@@ -9,6 +9,7 @@ class App extends React.Component {
       coffeeDrinks:[],
       activeDrink:{
         id:null,
+        dateTime:null,
         coffeeShop:'',
         coffeeBeverage:'',
         rating:null
@@ -40,6 +41,7 @@ class App extends React.Component {
       <div id="coffee-drinks-container">
       <table className='coffee-drinks-table'>
           <tr>
+            <th>Date & Time</th>
             <th>Coffee Beverage</th>
             <th>Coffee Shop</th>
             <th>Coffee rating</th>
@@ -47,6 +49,7 @@ class App extends React.Component {
           {drinks.map(function(drink, index){
             return(
               <tr key={index}>
+                <td>{drink.formatted_datetime}</td>
                 <td>{drink.coffee_beverage}</td>
                 <td>{drink.coffee_shop}</td>
                 <td>{drink.rating}</td>
