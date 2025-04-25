@@ -38,20 +38,22 @@ class App extends React.Component {
     return(
     <div className="container">
       <div id="coffee-drinks-container">
+      <table className='coffee-drinks-table'>
+          <tr>
+            <th>Coffee Beverage</th>
+            <th>Coffee Shop</th>
+            <th>Coffee rating</th>
+          </tr>
           {drinks.map(function(drink, index){
             return(
-              <div key={index} className='listwrapper flex-wrapper'>
-              <div style={{flex:1}}>
-                <span>{drink.coffee_beverage}</span>
-              </div>
-              <div style={{flex:2}} >
-                <span>{drink.coffee_shop}</span>
-              </div>
-              <div style={{flex:1}}>
-                <span>{drink.rating}</span>
-              </div>
-              </div>)
+              <tr key={index}>
+                <td>{drink.coffee_beverage}</td>
+                <td>{drink.coffee_shop}</td>
+                <td>{drink.rating}</td>
+              </tr>
+              )
           })}
+          </table>
           </div>
         </div>
     )
