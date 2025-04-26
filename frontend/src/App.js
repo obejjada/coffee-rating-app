@@ -33,6 +33,47 @@ class App extends React.Component {
       })
       )
  }
+
+ handleSubmit(e){
+  e.preventDefault()
+  console.log('ITEM:', this.state.activeDrink)
+
+  var csrftoken = this.getCookie('csrftoken')
+
+  var url = 'http://127.0.0.1:8000/coffee_database/api/coffee_drinks/all/'
+
+  /*if(this.state.editing == true){
+    url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id}/`
+    this.setState({
+      editing:false
+    })
+  }
+*/
+
+
+  fetch(url, {
+    method:'POST',
+    headers:{
+      'Content-type':'application/json',
+      'X-CSRFToken':csrftoken,
+    },
+    body:JSON.stringify(this.state.activeDrink)
+  }).then((response)  => {
+      this.fetchTasks()
+      this.setState({
+        activeItem:{
+          id:null,
+          dateTime:null,
+          coffeeShop:'',
+          coffeeBeverage:'',
+          rating:null
+      }
+      })
+  }).catch(function(error){
+    console.log('ERROR:', error)
+  })
+
+}
   
   render(){
     var drinks = this.state.coffeeDrinks
@@ -57,6 +98,16 @@ class App extends React.Component {
               )
           })}
           </table>
+          </div>
+          <div className='submit_form'>
+            <form onSubmit={this.handleSubmit} id='form'>
+              <tr>
+                <td>
+                <input className='coffee_shop' placeholder='Enter coffee shop name' value={this.activeDrink.coffee_shop} type='text' name='coffee_shop' ></input>
+                </td>
+                </tr>
+            </form>
+            
           </div>
         </div>
     )
