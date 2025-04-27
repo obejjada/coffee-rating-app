@@ -24,6 +24,8 @@ def create_new_entry(request):
     if serializer.is_valid():
         print('you got in here somehow')
         serializer.save()
+    else:
+        print('ERROR API call')
 
     return Response(serializer.data)
 

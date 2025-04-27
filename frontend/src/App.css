@@ -27,3 +27,12 @@ th {
   text-align: center;
   padding: 5px;
 }
+.submit_form{
+  margin-top: 50px;
+  border: 2px solid forestgreen;
+  width: 65%;
+  height: auto;
+}
+#submit{
+  background-color: aqua;
+}
