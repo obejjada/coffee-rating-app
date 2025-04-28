@@ -4,7 +4,8 @@ from .models import CoffeeDatabase
 
 class CoffeeSerializer(serializers.ModelSerializer):
     formatted_datetime = serializers.DateTimeField(source='date_time',
-                                                   format='%Y-%m-%d %H:%M:%S')
+                                                   format='%Y-%m-%d %H:%M:%S',
+                                                   read_only=True)
 
     class Meta:
         model = CoffeeDatabase

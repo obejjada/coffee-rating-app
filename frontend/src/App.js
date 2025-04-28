@@ -9,9 +9,9 @@ class App extends React.Component {
       coffeeDrinks:[],
       activeDrink:{
         id:null,
-        dateTime:null,
-        coffeeShop:'',
-        coffeeBeverage:'',
+        formatted_datetime:null,
+        coffee_shop:'',
+        coffee_beverage:'',
         rating:null
       }
     }
@@ -67,9 +67,9 @@ class App extends React.Component {
       this.setState({
         activeItem:{
           id:null,
-          dateTime:null,
-          coffeeShop:'',
-          coffeeBeverage:'',
+          formatted_datetime:null,
+          coffee_shop:'',
+          coffee_beverage:'',
           rating:null
       }
       })
@@ -141,10 +141,10 @@ getCookie(name) {
               <th>Coffee rating</th>
               <tr>
                 <td>
-                  <input onChange={this.handleChange} className='form-control' placeholder='Enter coffee beverage' value={this.state.activeDrink.coffeeBeverage} type="text" name='coffeeBeverage' id="coffeeBeverage" />
+                  <input onChange={this.handleChange} className='form-control' placeholder='Enter coffee beverage' value={this.state.activeDrink.coffee_beverage} type="text" name='coffee_beverage' id="coffeeBeverage" />
                 </td>
                 <td>
-                  <input onChange={this.handleChange} className='form-control' placeholder='Enter coffee shop name' value={this.state.activeDrink.coffeeShop} type="text" name='coffeeShop' id='coffeeShop'></input>
+                  <input onChange={this.handleChange} className='form-control' placeholder='Enter coffee shop name' value={this.state.activeDrink.coffee_shop} type="text" name='coffee_shop' id='coffeeShop'></input>
                 </td>
                 <td>
                   <input onChange={this.handleChange} className='form-control' placeholder='Enter rating' value={this.state.activeDrink.rating} type='number' name='rating' id='rating' ></input>

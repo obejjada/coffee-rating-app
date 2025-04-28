@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.shortcuts import redirect
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.decorators import api_view
 from .models import CoffeeDatabase
 from .searializer import CoffeeSerializer
@@ -22,14 +23,10 @@ def create_new_entry(request):
     '''API to create a new entry into the coffee drink database'''
     serializer = CoffeeSerializer(data=request.data)
     if serializer.is_valid():
-        print('you got in here somehow')
         serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
-        print('ERROR API call')
-
-    return Response(serializer.data)
-
-
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #def home(request):
 #    '''Method to return the use to the home page'''
