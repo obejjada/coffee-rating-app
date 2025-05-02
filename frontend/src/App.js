@@ -65,12 +65,12 @@ class App extends React.Component {
     console.log(response.status)
       this.fetchDrinks()
       this.setState({
-        activeItem:{
+        activeDrink:{
           id:null,
           formatted_datetime:null,
           coffee_shop:'',
           coffee_beverage:'',
-          rating:null
+          rating:''
       }
       })
   }).catch(function(error){
