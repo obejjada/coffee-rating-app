@@ -7,8 +7,7 @@ from .searializer import CoffeeSerializer
 
 @api_view(['GET'])
 def get_all_coffee_drinks(request):
-    ''' api endpoint for returning a JSON object with all the entries in the
-    database'''
+    '''API that returns all objects in the coffee drink database'''
     items = CoffeeDatabase.objects.all()
     serializer = CoffeeSerializer(items, many=True)
     return Response(serializer.data)
