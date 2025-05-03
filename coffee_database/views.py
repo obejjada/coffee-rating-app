@@ -29,7 +29,6 @@ def create_new_entry(request):
 def update_entry(request, pk):
     '''API to update entry in the coffee drink database'''
     entry = CoffeeDatabase.objects.get(id=pk)
-    print(pk)
     serializer = CoffeeSerializer(instance=entry, data=request.data)
 
     if serializer.is_valid():

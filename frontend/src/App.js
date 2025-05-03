@@ -30,8 +30,7 @@ class App extends React.Component {
   }
 
   fetchDrinks(){
-    console.log('Fetching')
-
+    
     fetch('http://127.0.0.1:8000/coffee_database/api/coffee_drinks/all/')
     .then(response => response.json())
     .then(data => 
@@ -43,8 +42,6 @@ class App extends React.Component {
 
  handleSubmit(e){
   e.preventDefault()
-  console.log('ITEM:', this.state.activeDrink)
-
   var csrftoken = this.getCookie('csrftoken')
 
   var url = 'http://127.0.0.1:8000/coffee_database/api/coffee_drinks/create/'
@@ -86,15 +83,12 @@ startEdit(drink){
     activeDrink:drink,
     editing:true,
   })
-  console.log(this.state.activeDrink.coffee_beverage)
 }
 
 handleChange(e){
   var name = e.target.name
   var value = e.target.value
-  console.log('Name:', name)
-  console.log('Value:', value)
-  
+
   this.setState({
     activeDrink:{
       ...this.state.activeDrink,
