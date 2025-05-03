@@ -37,3 +37,11 @@ def update_entry(request, pk):
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def delete_entry(request, pk):
+    '''API to delete entry from coffee drink database'''
+    entry = CoffeeDatabase.objects.get(id=pk)
+    entry.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
