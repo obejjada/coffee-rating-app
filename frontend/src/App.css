@@ -37,7 +37,11 @@ th {
   background-color: aqua;
 }
 
-button{
+.editDrinkbtn{
   margin: 10px;
   background-color: aquamarine;
+}
+.deleteDrinkbtn{
+  margin: 10px;
+  background-color: red;
 }

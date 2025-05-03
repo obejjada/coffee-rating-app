@@ -22,6 +22,7 @@ class App extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getCookie = this.getCookie.bind(this)
     this.startEdit = this.startEdit.bind(this)
+    this.deleteDrink = this.deleteDrink.bind(this)
   };
 
   componentWillMount(){
@@ -103,6 +104,20 @@ handleChange(e){
   
 }
 
+deleteDrink(drink){
+  var csrftoken = this.getCookie('csrftoken')
+
+    fetch(`http://127.0.0.1:8000/coffee_database/api/coffee_drinks/delete/${drink.id}/`, {
+      method:'DELETE',
+      headers:{
+        'Content-type':'application/json',
+        'X-CSRFToken':csrftoken,
+      },
+    }).then((response) =>{
+      this.fetchDrinks()
+    })
+  }
+
 getCookie(name) {
   var cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -140,7 +155,8 @@ getCookie(name) {
                 <td>{drink.coffee_beverage}</td>
                 <td>{drink.coffee_shop}</td>
                 <td>{drink.rating}</td>
-                <button onClick={()=> self.startEdit(drink)} name='editDrink'>Edit</button>
+                <button onClick={()=> self.startEdit(drink)} className='editDrinkbtn'name='editDrink'>Edit</button>
+                <button onClick={()=> self.deleteDrink(drink)} className='deleteDrinkbtn'name='deleteDrink'>Delete</button>
               </tr>
               )
             })}
