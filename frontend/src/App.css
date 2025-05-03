@@ -36,3 +36,8 @@ th {
 #submit{
   background-color: aqua;
 }
+
+button{
+  margin: 10px;
+  background-color: aquamarine;
+}

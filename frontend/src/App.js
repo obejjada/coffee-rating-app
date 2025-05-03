@@ -13,12 +13,15 @@ class App extends React.Component {
         coffee_shop:'',
         coffee_beverage:'',
         rating:null
-      }
+      },
+      editing:false,
     }
+
     this.fetchDrinks = this.fetchDrinks.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.getCookie = this.getCookie.bind(this)
+    this.startEdit = this.startEdit.bind(this)
   };
 
   componentWillMount(){
@@ -45,14 +48,12 @@ class App extends React.Component {
 
   var url = 'http://127.0.0.1:8000/coffee_database/api/coffee_drinks/create/'
 
-  /*if(this.state.editing == true){
-    url = `http://127.0.0.1:8000/api/task-update/${ this.state.activeItem.id}/`
+  if(this.state.editing == true){
+    url = `http://127.0.0.1:8000/coffee_database/api/coffee_drinks/update/${ this.state.activeDrink.id}/`
     this.setState({
       editing:false
     })
   }
-*/
-
 
   fetch(url, {
     method:'POST',
@@ -77,6 +78,14 @@ class App extends React.Component {
     console.log('ERROR:', error)
   })
 
+}
+
+startEdit(drink){
+  this.setState({
+    activeDrink:drink,
+    editing:true,
+  })
+  console.log(this.state.activeDrink.coffee_beverage)
 }
 
 handleChange(e){
@@ -112,6 +121,7 @@ getCookie(name) {
   
   render(){
     var drinks = this.state.coffeeDrinks
+    var self = this
     return(
     <div className="container">
       <div id="coffee-drinks-container">
@@ -125,10 +135,12 @@ getCookie(name) {
           {drinks.map(function(drink, index){
             return(
               <tr key={index}>
+                <td hidden>{drink.id}</td>
                 <td>{drink.formatted_datetime}</td>
                 <td>{drink.coffee_beverage}</td>
                 <td>{drink.coffee_shop}</td>
                 <td>{drink.rating}</td>
+                <button onClick={()=> self.startEdit(drink)} name='editDrink'>Edit</button>
               </tr>
               )
             })}
