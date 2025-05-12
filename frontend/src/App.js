@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import React from 'react';
 import './App.css';
+import { Navigation } from "./components/navigation";
 
 class App extends React.Component {
   constructor(props){
@@ -132,6 +133,8 @@ getCookie(name) {
     var drinks = this.state.coffeeDrinks
     var self = this
     return(
+    <div>
+      <Navigation></Navigation>
     <div className="container">
       <div id="coffee-drinks-container">
         <table className='coffee-drinks-table'>
@@ -176,9 +179,9 @@ getCookie(name) {
                 </td>
               </tr>
             </form>
-          </div>      
+          </div>
     </div>
-    
+    </div>
     )
   }
 }
