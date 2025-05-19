@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export const Navigation = (props) => {
     return (
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Rate your Coffee</a>
+        <Link class="navbar-brand" to="">Rate your Coffee</Link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -11,22 +12,22 @@ export const Navigation = (props) => {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Rate Coffee Drinks</a>
+            <Link class="nav-link" to="/rate_coffee_drinks">Rate Coffee Drinks</Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Rate Coffee Beans</a>
+            <Link class="nav-link" to="">Rate Coffee Beans</Link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <Link class="nav-link" to="">Login</Link>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <Link class="nav-link dropdown-toggle" to="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Dropdown
-            </a>
+            </Link>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Brew Guide</a>
-              <a class="dropdown-item" href="#">Rate Coffee Drinks</a>
-              <a class="dropdown-item" href="#">Rate Coffee Beans</a>
+              <Link class="dropdown-item" to="">Brew Guide</Link>
+              <Link class="dropdown-item" to="">Rate Coffee Drinks</Link>
+              <Link class="dropdown-item" to="">Rate Coffee Beans</Link>
               <div class="dropdown-divider"></div>
             </div>
           </li>
