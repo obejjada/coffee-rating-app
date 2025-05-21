@@ -5,7 +5,7 @@ from django_countries.fields import CountryField
 class CoffeeDatabase(models.Model):
     '''Class that will define the Coffee Rating App's database'''
 
-    date_time = models.DateTimeField()
+    date_time = models.DateTimeField(auto_now_add=True)
     coffee_shop = models.TextField()
     coffee_beverage = models.CharField(max_length=300)
     rating = models.FloatField()

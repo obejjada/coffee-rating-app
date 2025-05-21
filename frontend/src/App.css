@@ -1,0 +1,47 @@
+.container{
+  max-width:auto;
+  margin:0 auto;
+  background-color: #fff;
+  
+  margin-top:200px;
+  margin-bottom:100px;
+
+  justify-content: space-around;
+  align-items: flex-start;
+  
+}
+
+.coffee-drinks-table{
+  border: 2px solid forestgreen;
+  width: auto;
+  height: auto;
+}
+
+td {
+  text-align: center;
+  padding: 5px;
+}
+
+th {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 5px;
+}
+.submit_form{
+  margin-top: 50px;
+  border: 2px solid forestgreen;
+  width: 65%;
+  height: auto;
+}
+#submit{
+  background-color: aqua;
+}
+
+.editDrinkbtn{
+  margin: 10px;
+  background-color: aquamarine;
+}
+.deleteDrinkbtn{
+  margin: 10px;
+  background-color: red;
+}
