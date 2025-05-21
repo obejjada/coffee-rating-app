@@ -38,3 +38,4 @@ class CoffeeBeanDatabase(models.Model):
     flavour_notes = models.ManyToManyField(FlavourNote, related_name='flavours')
     process = models.CharField(max_length=100)
     rating = models.FloatField()
+    comment = models.CharField(max_length=500, default='')
