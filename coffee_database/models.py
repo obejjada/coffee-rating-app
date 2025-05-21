@@ -29,6 +29,7 @@ class FlavourNote(models.Model):
 
 class CoffeeBeanDatabase(models.Model):
     '''Stores Coffee Bean ratings'''
+    date_time = models.DateTimeField(auto_now_add=True)
     roast_name = models.CharField(max_length=100)
     coffee_roaster = models.CharField(max_length=100)
     is_signle_origin = models.BooleanField(default=False)
