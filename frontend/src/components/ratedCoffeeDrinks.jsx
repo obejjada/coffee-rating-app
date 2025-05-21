@@ -42,16 +42,14 @@ export const RatedCoffeeDrinks = (props) => {
         body:JSON.stringify(activeDrink)
       }).then((response)  => {
         console.log(response.status)
-          fetchDrinks()
-          setActiveDrink({
-            activeDrink:{
-              id:null,
-              formatted_datetime:null,
-              coffee_shop:'',
-              coffee_beverage:'',
-              rating:''
-          }
-          })
+        fetchDrinks()
+        setActiveDrink({
+        id:null,
+        formatted_datetime:null,
+        coffee_shop:'',
+        coffee_beverage:'',
+        rating:''
+    });
       }).catch(function(error){
         console.log('ERROR:', error)
       })
