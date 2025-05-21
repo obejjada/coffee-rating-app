@@ -1,8 +1,8 @@
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view
-from .models import CoffeeDatabase
-from .searializer import CoffeeSerializer
+from .models import CoffeeDatabase, CoffeeBeanDatabase
+from .searializer import CoffeeSerializer, CoffeeBeanSerializer
 
 
 @api_view(['GET'])
@@ -43,3 +43,11 @@ def delete_entry(request, pk):
     entry = CoffeeDatabase.objects.get(id=pk)
     entry.delete()
     return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@api_view(['GET'])
+def get_all_coffee_beans(request):
+    '''API that returns all objects in the coffee bean database'''
+    items = CoffeeBeanDatabase.objects.all()
+    serializer = CoffeeBeanSerializer(items, many=True)
+    return Response(serializer.data)
