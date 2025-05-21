@@ -25,3 +25,16 @@ class FlavourNote(models.Model):
 
     def __str__(self):
         return self.flavour_notes
+
+
+class CoffeeBeanDatabase(models.Model):
+    '''Stores Coffee Bean ratings'''
+    roast_name = models.CharField(max_length=100)
+    coffee_roaster = models.CharField(max_length=100)
+    is_signle_origin = models.BooleanField(default=False)
+    country_roaster = models.ManyToManyField(CoffeeOrigin, related_name='roaster_country')
+    country_origin = models.ManyToManyField(CoffeeOrigin, related_name='countries')
+    region = models.CharField(max_length=100)
+    flavour_notes = models.ManyToManyField(FlavourNote, related_name='flavours')
+    process = models.CharField(max_length=100)
+    rating = models.FloatField()
