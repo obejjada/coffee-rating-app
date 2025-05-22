@@ -14,6 +14,7 @@ class CoffeeDatabase(models.Model):
 class CoffeeOrigin(models.Model):
     """Stores countries where coffee beans are grown."""
     country = CountryField(unique=True)
+    country_name = models.CharField(max_length=300)
 
     def __str__(self):
         return self.country
