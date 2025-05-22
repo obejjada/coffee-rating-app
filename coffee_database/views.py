@@ -51,3 +51,14 @@ def get_all_coffee_beans(request):
     items = CoffeeBeanDatabase.objects.all()
     serializer = CoffeeBeanSerializer(items, many=True)
     return Response(serializer.data)
+
+
+@api_view(['POST'])
+def create_new_entry_beans(request):
+    '''API to create a new entry into the coffee drink database'''
+    serializer = CoffeeBeanSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

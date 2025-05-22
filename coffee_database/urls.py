@@ -12,5 +12,7 @@ urlpatterns = [
      path("api/coffee_drinks/delete/<str:pk>/", views.delete_entry,
           name='delete_entry'),
      path("api/coffee_beans/all/", views.get_all_coffee_beans,
-          name='get_all_coffee_beans')
+          name='get_all_coffee_beans'),
+     path("api/coffee_beans/create/", views.create_new_entry_beans,
+          name='create_new_entry_beans'),
 ]
