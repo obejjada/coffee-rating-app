@@ -139,11 +139,15 @@ export const RatedCoffeeBeans = (props) => {
                       <td>{bean.formatted_datetime}</td>
                       <td>{bean.roast_name}</td>
                       <td>{bean.coffee_roaster}</td>
-                      <td>{bean.is_signle_origin}</td>
+                      <td>{bean.is_signle_origin ? 'True':'False'}</td>
                       <td>{bean.country_roaster}</td>
-                      <td>{bean.country_origin}</td>
+                      <td>{bean.country_origin.map((countries,index)=>(
+                        <div key={index}>{countries}</div>))}
+                      </td>
                       <td>{bean.region}</td>
-                      <td>{bean.flavour_notes}</td>
+                      <td>{bean.flavour_notes.map((flavours,index)=>(
+                      <div key={index}>{flavours}</div>))}
+                      </td>
                       <td>{bean.process}</td>
                       <td>{bean.rating}</td>
                       <td>{bean.comment}</td>
