@@ -15,4 +15,8 @@ urlpatterns = [
           name='get_all_coffee_beans'),
      path("api/coffee_beans/create/", views.create_new_entry_beans,
           name='create_new_entry_beans'),
+     path("api/coffee_beans/update/<str:pk>/", views.update_entry_beans,
+          name='update_entry_beans'),
+     path("api/coffee_beans/delete/<str:pk>/", views.delete_entry_beans,
+          name='delete_entry_beans'),
 ]

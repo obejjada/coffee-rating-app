@@ -55,10 +55,31 @@ def get_all_coffee_beans(request):
 
 @api_view(['POST'])
 def create_new_entry_beans(request):
-    '''API to create a new entry into the coffee drink database'''
+    '''API to create a new entry into the coffee bean database'''
     serializer = CoffeeBeanSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def update_entry_beans(request, pk):
+    '''API to update entry in the coffee bean database'''
+    entry = CoffeeBeanDatabase.objects.get(id=pk)
+    serializer = CoffeeBeanSerializer(instance=entry, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+def delete_entry_beans(request, pk):
+    '''API to delete entry from coffee bean database'''
+    entry = CoffeeBeanDatabase.objects.get(id=pk)
+    entry.delete()
+    return Response(status=status.HTTP_204_NO_CONTENT)
