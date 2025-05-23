@@ -3,7 +3,7 @@
   margin:0 auto;
   background-color: #fff;
   
-  margin-top:200px;
+  margin-top:50px;
   margin-bottom:100px;
 
   justify-content: space-around;
@@ -12,6 +12,11 @@
 }
 
 .coffee-drinks-table{
+  border: 2px solid forestgreen;
+  width: auto;
+  height: auto;
+}
+.coffee-bean-table{
   border: 2px solid forestgreen;
   width: auto;
   height: auto;
@@ -37,11 +42,11 @@ th {
   background-color: aqua;
 }
 
-.editDrinkbtn{
+.editBtn{
   margin: 10px;
   background-color: aquamarine;
 }
-.deleteDrinkbtn{
+.deleteBtn{
   margin: 10px;
   background-color: red;
 }

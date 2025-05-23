@@ -152,8 +152,8 @@ export const RatedCoffeeBeans = (props) => {
                       <td>{bean.rating}</td>
                       <td>{bean.comment}</td>
                       <td>
-                        <button onClick={() => startEdit(bean)} className='editBeanbtn'name='editBean'>Edit</button>
-                        <button onClick={() => deleteBean(bean)} className='deleteBeanbtn'name='deleteBean'>Delete</button>
+                        <button onClick={() => startEdit(bean)} className='editBtn'name='editBean'>Edit</button>
+                        <button onClick={() => deleteBean(bean)} className='deleteBtn'name='deleteBean'>Delete</button>
                       </td>
                     </tr>
                     )

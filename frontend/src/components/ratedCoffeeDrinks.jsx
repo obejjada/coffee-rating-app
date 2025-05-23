@@ -120,8 +120,8 @@ export const RatedCoffeeDrinks = (props) => {
                       <td>{drink.coffee_shop}</td>
                       <td>{drink.rating}</td>
                       <td>
-                        <button onClick={() => startEdit(drink)} className='editDrinkbtn'name='editDrink'>Edit</button>
-                        <button onClick={() => deleteDrink(drink)} className='deleteDrinkbtn'name='deleteDrink'>Delete</button>
+                        <button onClick={() => startEdit(drink)} className='editBtn'name='editDrink'>Edit</button>
+                        <button onClick={() => deleteDrink(drink)} className='deleteBtn'name='deleteDrink'>Delete</button>
                       </td>
                     </tr>
                     )
