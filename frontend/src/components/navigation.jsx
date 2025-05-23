@@ -15,7 +15,7 @@ export const Navigation = (props) => {
             <Link class="nav-link" to="/rate_coffee_drinks">Rate Coffee Drinks</Link>
           </li>
           <li class="nav-item">
-            <Link class="nav-link" to="">Rate Coffee Beans</Link>
+            <Link class="nav-link" to="/rate_coffee_beans">Rate Coffee Beans</Link>
           </li>
           <li class="nav-item">
             <Link class="nav-link" to="">Login</Link>

@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Switch } from 'react-router-dom'
 import { Navigation } from "./components/navigation";
 import CoffeeDrinks from './pages/coffeeDrinks';
+import CoffeeBeans from './pages/coffeeBeans';
 
 class App extends React.Component {
   constructor(props){
@@ -28,11 +29,11 @@ class App extends React.Component {
     <div>
       <Router>
         <Navigation></Navigation>
-        <Routes>
-        <Route path="/rate_coffee_Drinks" element={<CoffeeDrinks />} />
-        </Routes>
+          <Routes>
+            <Route path="/rate_coffee_Drinks" element={<CoffeeDrinks />} />
+            <Route path="/rate_coffee_Beans" element={<CoffeeBeans />} />
+          </Routes>
       </Router>
-    
     </div>
     )
   }
