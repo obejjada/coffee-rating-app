@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from .models import CoffeeDatabase, CoffeeBeanDatabase, CoffeeOrigin, FlavourNote
+from .models import CoffeeDatabase, CoffeeBeanDatabase, CoffeeOrigin, \
+                                    FlavourNote
 
 
 class CoffeeSerializer(serializers.ModelSerializer):
