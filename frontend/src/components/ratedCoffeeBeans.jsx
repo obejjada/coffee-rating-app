@@ -9,9 +9,9 @@ export const RatedCoffeeBeans = (props) => {
         coffee_roaster:'',
         is_signle_origin:false,
         country_roaster:'',
-        country_origin:'',
+        country_origin:[''],
         region: '',
-        flavour_notes:'',
+        flavour_notes:[''],
         process:'',
         rating:'',
         comment:''
@@ -57,9 +57,9 @@ export const RatedCoffeeBeans = (props) => {
         coffee_roaster:'',
         is_signle_origin:false,
         country_roaster:'',
-        country_origin:'',
+        country_origin:[''],
         region: '',
-        flavour_notes:'',
+        flavour_notes:[''],
         process:'',
         rating:'',
         comment:''
@@ -97,6 +97,32 @@ export const RatedCoffeeBeans = (props) => {
           fetchBeans()
         })
       }
+    
+    const handleCountryChange = async (index, value) => {
+      const updatedCountries = [...activeBeans.country_origin];
+      updatedCountries[index] = value;
+      setActiveBeans(prev => ({...prev, country_origin:updatedCountries}))
+    };
+
+    const addCountryField = () => {
+    setActiveBeans(prev => ({
+      ...prev,
+      country_origin: [...prev.country_origin, ''],
+    }));
+  };
+
+      const handleFlavourNote = async (index, value) => {
+      const updatedFlavourNotes = [...activeBeans.flavour_notes];
+      updatedFlavourNotes[index] = value;
+      setActiveBeans(prev => ({...prev, flavour_notes:updatedFlavourNotes}))
+    };
+
+    const addFlavourNotes = () => {
+    setActiveBeans(prev => ({
+      ...prev,
+      flavour_notes: [...prev.flavour_notes, ''],
+    }));
+  };
       
     const getCookie = async (name) =>{
         var cookieValue = null;
@@ -184,19 +210,41 @@ export const RatedCoffeeBeans = (props) => {
                         <input onChange={handleChange} className='form-control' placeholder='Enter roaster name' value={activeBeans.coffee_roaster} type="text" name='coffee_roaster' id='roasterName'></input>
                       </td>
                       <td>
-                        <input onChange={handleChange} className='form-control' placeholder='is signle origin' value={activeBeans.is_signle_origin} type='checkbox' name='is_signle_origin' id='singleOrigin' ></input>
+                        <input onChange={handleChange} className='form-control' placeholder='is it signle origin' value={activeBeans.is_signle_origin} type='text' name='is_signle_origin' id='singleOrigin' ></input>
                       </td>
                       <td>
-                        <input onChange={handleChange} className='form-control' placeholder='Enter coffee beverage' value={activeBeans.country_roaster} type="text" name='country_roaster' id="roasterCountry" />
+                        <input onChange={handleChange} className='form-control' placeholder='Enter roaster country' value={activeBeans.country_roaster} type="text" name='country_roaster' id="roasterCountry" />
                       </td>
                       <td>
-                        <input onChange={handleChange} className='form-control' placeholder='Enter coffee shop name' value={activeBeans.country_origin} type="text" name='country_origin' id='originCountry'></input>
+                          {activeBeans.country_origin.map((country, index) => (
+                            <div key={index}>
+                              <input
+                              type='text'
+                              vaue={country}
+                              onChange={e => handleCountryChange(index, e.target.value)}>
+                              </input>
+                            </div>
+                          ))}
+                          <div>
+                           <button type="button" onClick={addCountryField}>Add Another Country</button>
+                        </div>
                       </td>
                       <td>
-                        <input onChange={handleChange} className='form-control' placeholder='Enter rating' value={activeBeans.region} type='text' name='region' id='region' ></input>
+                        <input onChange={handleChange} className='form-control' placeholder='Region' value={activeBeans.region} type='text' name='region' id='region' ></input>
                       </td>
                       <td>
-                        <input onChange={handleChange} className='form-control' placeholder='Enter coffee beverage' value={activeBeans.flavour_notes} type="text" name='flavour_notes' id="flavourNotes" />
+                          {activeBeans.flavour_notes.map((notes, index) => (
+                            <div key={index}>
+                              <input
+                              type='text'
+                              vaue={notes}
+                              onChange={e => handleFlavourNote(index, e.target.value)}>
+                              </input>
+                            </div>
+                          ))}
+                          <div>
+                           <button type="button" onClick={addFlavourNotes}>Add Another flavour note</button>
+                        </div>
                       </td>
                       <td>
                         <input onChange={handleChange} className='form-control' placeholder='Enter process' value={activeBeans.process} type="text" name='process' id='process'></input>
