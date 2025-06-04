@@ -111,6 +111,14 @@ export const RatedCoffeeBeans = (props) => {
     }));
   };
 
+    const removeCountryField = (index) => {
+      if (activeBeans.country_origin.length <= 1) return;
+      setActiveBeans(prev => ({
+      ...prev,
+      country_origin: prev.country_origin.filter((_, i) => i !== index),
+    }));
+  };
+
       const handleFlavourNote = async (index, value) => {
       const updatedFlavourNotes = [...activeBeans.flavour_notes];
       updatedFlavourNotes[index] = value;
@@ -121,6 +129,14 @@ export const RatedCoffeeBeans = (props) => {
     setActiveBeans(prev => ({
       ...prev,
       flavour_notes: [...prev.flavour_notes, ''],
+    }));
+  };
+
+  const removeFlavourNote = (index) => {
+      if (activeBeans.flavour_notes.length <= 1) return;
+      setActiveBeans(prev => ({
+      ...prev,
+      flavour_notes: prev.flavour_notes.filter((_, i) => i !== index),
     }));
   };
       
@@ -223,11 +239,15 @@ export const RatedCoffeeBeans = (props) => {
                               vaue={country}
                               onChange={e => handleCountryChange(index, e.target.value)}>
                               </input>
+                              <div>
+                                <button type="button" onClick={() => removeCountryField(index)}>Remove</button>
+                              </div>
                             </div>
                           ))}
                           <div>
                            <button type="button" onClick={addCountryField}>Add Another Country</button>
-                        </div>
+                          </div>
+                          
                       </td>
                       <td>
                         <input onChange={handleChange} className='form-control' placeholder='Region' value={activeBeans.region} type='text' name='region' id='region' ></input>
@@ -240,6 +260,9 @@ export const RatedCoffeeBeans = (props) => {
                               vaue={notes}
                               onChange={e => handleFlavourNote(index, e.target.value)}>
                               </input>
+                              <div>
+                                <button type="button" onClick={() => removeFlavourNote(index)}>Remove</button>
+                              </div>
                             </div>
                           ))}
                           <div>
