@@ -29,7 +29,7 @@ class CoffeeBeanSerializer(serializers.ModelSerializer):
     country_origin = serializers.SlugRelatedField(
         many=True,
         queryset=CoffeeOrigin.objects.all(),
-        slug_field="country_name",
+        slug_field="country_name"
     )
 
     flavour_notes = serializers.SlugRelatedField(

@@ -34,7 +34,7 @@ class CoffeeBeanDatabase(models.Model):
     roast_name = models.CharField(max_length=100)
     coffee_roaster = models.CharField(max_length=100)
     is_signle_origin = models.BooleanField(default=False)
-    country_roaster = CountryField()
+    country_roaster = models.CharField(max_length=100)
     country_origin = models.ManyToManyField(CoffeeOrigin,
                                             related_name='countries')
     region = models.CharField(max_length=100)
